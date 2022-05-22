@@ -18,7 +18,7 @@ export default function Customer({
 }: ICustomerProps) {
   return (
     <div
-      className={`container flex justify-between p-4 border-2 rounded border-l-8 ${
+      className={`flex justify-between p-4 bg-white shadow-lg border-2 rounded border-l-8 ${
         emailUnsubscribed ? 'border-l-rose-500' : 'border-l-lime-500'
       }`}
     >
@@ -36,13 +36,13 @@ export default function Customer({
       </div>
       <div className="w-24 flex flex-col justify-center items-center gap-2">
         <button
-          className="w-full border-2 border-blue-600 hover:bg-slate-100 text-gray-800 font-bold py-2 px-4 rounded"
+          className="w-full border-2 border-blue-600 bg-white hover:bg-slate-100 transition-colors text-gray-800 font-bold py-2 px-4 rounded"
           onClick={handleEdit}
         >
           Edit
         </button>
         <button
-          className="w-full bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"
+          className="w-full bg-red-600 hover:bg-red-800 transition-colors text-white font-bold py-2 px-4 rounded"
           onClick={handleDelete}
         >
           Delete

@@ -52,11 +52,7 @@ export default function CustomerWrapper() {
   return (
     <div>
       <div className="flex gap-10">
-        <CustomerForm
-          handleSubmit={handleSubmit}
-          editId={editId}
-          formData={formData}
-        />
+        <CustomerForm handleSubmit={handleSubmit} formData={formData} />
         {isLoading ? (
           <Loading />
         ) : (

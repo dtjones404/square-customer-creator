@@ -9,7 +9,6 @@ interface IFormData {
 
 interface ICustomerFormProps {
   handleSubmit: Function;
-  editId: string | null;
   formData: ISquareCustomer;
 }
 
@@ -22,11 +21,10 @@ const styles = {
 
 export default function CustomerForm({
   handleSubmit,
-  editId,
   formData,
 }: ICustomerFormProps) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-1">
       <h1 className="text-lg font-bold mx-auto">Add / Edit Customer:</h1>
       <Formik
         enableReinitialize
@@ -61,7 +59,7 @@ export default function CustomerForm({
         }}
       >
         {({ isSubmitting }: { isSubmitting: boolean }) => (
-          <Form className="border-2  flex flex-col p-8 w-full rounded">
+          <Form className="border-2  flex flex-col p-8 w-full rounded shadow-xl bg-white">
             <label className={styles.label} htmlFor="email_address">
               Email
             </label>
@@ -94,7 +92,7 @@ export default function CustomerForm({
               component="div"
             />
             <button
-              className="bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white font-bold rounded mt-2"
+              className="bg-blue-500 hover:bg-blue-700 transition-colors py-2 px-4 text-white font-bold rounded mt-2"
               type="submit"
               disabled={isSubmitting}
             >
