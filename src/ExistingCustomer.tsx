@@ -1,35 +1,29 @@
-import axios, { AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
 import Customer from './Customer';
 import { ISquareCustomer } from './types/squareCustomer';
 
-export default function ExistingCustomer() {
-  const [customerData, setCustomerData] = useState([] as ISquareCustomer[]);
-  const fetchData = async () => {
-    const response: AxiosResponse = await axios.get('/api/customer');
-    console.log(response.data);
-    setCustomerData(response.data);
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
+interface IExistingCustomerProps {
+  customerData: ISquareCustomer[];
+  handleDelete: Function;
+  handleEdit: Function;
+}
+
+export default function ExistingCustomer({
+  customerData,
+  handleDelete,
+  handleEdit,
+}: IExistingCustomerProps) {
   return (
     <div>
-      {customerData.map(
-        ({
-          id,
-          given_name,
-          created_at,
-          preferences: { email_unsubscribed },
-        }) => (
-          <Customer
-            key={id}
-            givenName={given_name}
-            createdAt={new Date(created_at)}
-            emailUnsubscribed={email_unsubscribed}
-          />
-        )
-      )}
+      {customerData.map((customerData) => (
+        <Customer
+          key={customerData.id}
+          givenName={customerData.given_name}
+          createdAt={new Date(customerData.created_at)}
+          emailUnsubscribed={customerData.preferences.email_unsubscribed}
+          handleDelete={() => handleDelete(customerData.id)}
+          handleEdit={() => handleEdit(customerData)}
+        />
+      ))}
     </div>
   );
 }
