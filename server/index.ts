@@ -9,9 +9,12 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use('/api/customer', customerRouter);
 
-// serve index
-app.get('/', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, '../public/index.html'));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../build/')));
+}
+
+app.use('/customers', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

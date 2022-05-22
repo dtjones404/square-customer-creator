@@ -18,13 +18,12 @@
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.6.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "PORT=8080 react-scripts start",
+    "start": "NODE_ENV=production ts-node ./server/index.ts",
     "build": "react-scripts build",
-    "dev": "nodemon ./server/index.ts",
+    "dev": "concurrently 'nodemon ./server/index.ts' 'PORT=8080 react-scripts start'",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -47,8 +46,10 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^7.2.0",
     "dotenv": "^16.0.1",
     "nodemon": "^2.0.16",
-    "ts-node": "^10.7.0"
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
   }
 }

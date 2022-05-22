@@ -48,6 +48,7 @@ export default function CustomerWrapper() {
 
   return (
     <div>
+      <h1>Square Customer Creator</h1>
       <CustomerForm
         handleSubmit={handleSubmit}
         editId={editId}

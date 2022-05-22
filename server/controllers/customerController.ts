@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { NextFunction, Request, Response } from 'express';
 
 const URL = 'https://connect.squareupsandbox.com/v2/customers';
@@ -12,7 +12,6 @@ export const customerController = {
           'Content-Type': 'application/json',
         },
       });
-      console.log(response.data, new Date().toLocaleTimeString());
       res.locals.customers = response.data.customers;
       next();
     } catch (err) {
@@ -30,7 +29,6 @@ export const customerController = {
           'Content-Type': 'application/json',
         },
       });
-      console.log(response.data, new Date().toLocaleTimeString());
       res.locals.customer = response.data.customer;
       next();
     } catch (err) {
@@ -52,7 +50,6 @@ export const customerController = {
           },
         }
       );
-      console.log(response.data, new Date().toLocaleTimeString());
       res.locals.customer = response.data.customer;
       next();
     } catch (err) {
@@ -73,7 +70,6 @@ export const customerController = {
           },
         }
       );
-      console.log(response);
       res.locals.customer = response.data.customer;
       next();
     } catch (err) {

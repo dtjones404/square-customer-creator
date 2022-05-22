@@ -18,6 +18,7 @@ export default function ExistingCustomer({
         <Customer
           key={customerData.id}
           givenName={customerData.given_name}
+          familyName={customerData.family_name}
           createdAt={new Date(customerData.created_at)}
           emailUnsubscribed={customerData.preferences.email_unsubscribed}
           handleDelete={() => handleDelete(customerData.id)}
