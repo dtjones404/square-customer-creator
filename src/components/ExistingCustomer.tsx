@@ -13,7 +13,7 @@ export default function ExistingCustomer({
   handleEdit,
 }: IExistingCustomerProps) {
   return (
-    <div className="border-2 flex-1 rounded max-h-[700px] overflow-y-scroll shadow-xl">
+    <div className="border-2 flex-1 rounded-lg max-h-[700px] overflow-y-scroll shadow-xl">
       {customerData.map((customerData) => (
         <Customer
           key={customerData.id}

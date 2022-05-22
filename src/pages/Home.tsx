@@ -8,12 +8,10 @@ export default function Home() {
       logoUrl="https://1000logos.net/wp-content/uploads/2019/05/Square.jpg"
     >
       <Link
-        className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
+        className="text-gray-700 border-2 text-center text-lg font-bold mt-4 py-2 rounded shadow-md hover:bg-gray-100 transition-colors"
         to="/customers"
       >
-        <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
-          Create Customers
-        </h1>
+        Create Customers
       </Link>
     </SplashCard>
   );

@@ -18,7 +18,7 @@ export default function Customer({
 }: ICustomerProps) {
   return (
     <div
-      className={`flex justify-between p-4 bg-white shadow-lg border-2 rounded border-l-8 ${
+      className={`flex justify-between p-4 bg-white shadow-lg border-2 rounded-lg border-l-8 ${
         emailUnsubscribed ? 'border-l-rose-500' : 'border-l-lime-500'
       }`}
     >

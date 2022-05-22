@@ -36,6 +36,8 @@ export default function CustomerWrapper() {
       if (response.status === 200)
         setCustomerData((oldState) => [response.data, ...oldState]);
     }
+    setEditId(null);
+    setFormData({} as ISquareCustomer);
   };
   const handleDelete = async (customerId: string) => {
     const response = await axios.delete(`/api/customer/${customerId}`);

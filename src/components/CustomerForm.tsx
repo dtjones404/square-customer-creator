@@ -12,6 +12,12 @@ interface ICustomerFormProps {
   formData: ISquareCustomer;
 }
 
+const defaultFormValues = {
+  email_address: '',
+  given_name: '',
+  family_name: '',
+};
+
 const styles = {
   label: 'block text-gray-700 text-sm font-bold pt-2 pb-1',
   field:
@@ -52,14 +58,14 @@ export default function CustomerForm({
           }
           return errors;
         }}
-        onSubmit={async (values, { setSubmitting }) => {
-          console.log('submitting...');
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
           handleSubmit(values);
           setSubmitting(false);
+          resetForm({ values: defaultFormValues });
         }}
       >
         {({ isSubmitting }: { isSubmitting: boolean }) => (
-          <Form className="border-2  flex flex-col p-8 w-full rounded shadow-xl bg-white">
+          <Form className="border-2 flex flex-col p-8 w-full rounded-lg shadow-xl bg-white">
             <label className={styles.label} htmlFor="email_address">
               Email
             </label>
@@ -92,7 +98,7 @@ export default function CustomerForm({
               component="div"
             />
             <button
-              className="bg-blue-500 hover:bg-blue-700 transition-colors py-2 px-4 text-white font-bold rounded mt-2"
+              className="bg-blue-500 hover:bg-blue-700 transition-colors py-2 px-4 shadow-lg text-white font-bold rounded mt-2"
               type="submit"
               disabled={isSubmitting}
             >
