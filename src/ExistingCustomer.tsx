@@ -13,12 +13,13 @@ export default function ExistingCustomer({
   handleEdit,
 }: IExistingCustomerProps) {
   return (
-    <div>
+    <div className="border-2 flex-1 rounded max-h-[700px] overflow-y-scroll">
       {customerData.map((customerData) => (
         <Customer
           key={customerData.id}
           givenName={customerData.given_name}
           familyName={customerData.family_name}
+          emailAddress={customerData.email_address}
           createdAt={new Date(customerData.created_at)}
           emailUnsubscribed={customerData.preferences.email_unsubscribed}
           handleDelete={() => handleDelete(customerData.id)}

@@ -2,10 +2,12 @@ import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import CustomerForm from './CustomerForm';
 import ExistingCustomer from './ExistingCustomer';
+import Loading from './Loading';
 import { ISquareCustomer } from './types/squareCustomer';
 
 export default function CustomerWrapper() {
   const [customerData, setCustomerData] = useState([] as ISquareCustomer[]);
+  const [isLoading, setIsLoading] = useState(true);
   const [editId, setEditId] = useState(null as string | null);
   const [formData, setFormData] = useState({} as ISquareCustomer);
 
@@ -15,6 +17,7 @@ export default function CustomerWrapper() {
   const fetchData = async () => {
     const response: AxiosResponse = await axios.get('/api/customer');
     setCustomerData(response.data);
+    setIsLoading(false);
   };
 
   const handleSubmit = async (formData: ISquareCustomer) => {
@@ -48,17 +51,22 @@ export default function CustomerWrapper() {
 
   return (
     <div>
-      <h1>Square Customer Creator</h1>
-      <CustomerForm
-        handleSubmit={handleSubmit}
-        editId={editId}
-        formData={formData}
-      />
-      <ExistingCustomer
-        customerData={customerData}
-        handleDelete={handleDelete}
-        handleEdit={handleEdit}
-      />
+      <div className="flex gap-10">
+        <CustomerForm
+          handleSubmit={handleSubmit}
+          editId={editId}
+          formData={formData}
+        />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <ExistingCustomer
+            customerData={customerData}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
+        )}
+      </div>
     </div>
   );
 }

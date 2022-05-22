@@ -3,8 +3,8 @@ import { ISquareCustomer } from './types/squareCustomer';
 
 interface IFormData {
   email_address?: string;
-  firstName?: string;
-  lastName?: string;
+  given_name?: string;
+  family_name?: string;
 }
 
 interface ICustomerFormProps {
@@ -13,14 +13,21 @@ interface ICustomerFormProps {
   formData: ISquareCustomer;
 }
 
+const styles = {
+  label: 'block text-gray-700 text-sm font-bold pt-2 pb-1',
+  field:
+    'bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none',
+  error: 'text-red-500 text-sm',
+};
+
 export default function CustomerForm({
   handleSubmit,
   editId,
   formData,
 }: ICustomerFormProps) {
   return (
-    <div className="formContainer">
-      <h1>Add / Edit Customer:</h1>
+    <div className="flex flex-col">
+      <h1 className="text-lg font-bold mx-auto">Add / Edit Customer:</h1>
       <Formik
         enableReinitialize
         initialValues={{
@@ -37,24 +44,60 @@ export default function CustomerForm({
               values.email_address
             )
           ) {
-            errors.email_address = 'Invalid email_address address';
+            errors.email_address = 'Invalid email address';
+          }
+          if (!values.given_name) {
+            errors.given_name = 'Required';
+          }
+          if (!values.family_name) {
+            errors.family_name = 'Required';
           }
           return errors;
         }}
         onSubmit={async (values, { setSubmitting }) => {
+          console.log('submitting...');
           handleSubmit(values);
           setSubmitting(false);
         }}
       >
         {({ isSubmitting }: { isSubmitting: boolean }) => (
-          <Form>
-            <Field type="email_address" name="email_address" />
-            <ErrorMessage name="email_address" component="div" />
-            <Field type="text" name="given_name" />
-            <ErrorMessage name="given_name" component="div" />
-            <Field type="text" name="family_name" />
-            <ErrorMessage name="family_name" component="div" />
-            <button type="submit" disabled={isSubmitting}>
+          <Form className="border-2  flex flex-col p-8 w-full rounded">
+            <label className={styles.label} htmlFor="email_address">
+              Email
+            </label>
+            <Field
+              className={styles.field}
+              type="email_address"
+              name="email_address"
+            />
+            <ErrorMessage
+              className={styles.error}
+              name="email_address"
+              component="div"
+            />
+            <label className={styles.label} htmlFor="given_name">
+              First Name
+            </label>
+            <Field className={styles.field} type="text" name="given_name" />
+            <ErrorMessage
+              className={styles.error}
+              name="given_name"
+              component="div"
+            />
+            <label className={styles.label} htmlFor="family_name">
+              Last Name
+            </label>
+            <Field className={styles.field} type="text" name="family_name" />
+            <ErrorMessage
+              className={styles.error}
+              name="family_name"
+              component="div"
+            />
+            <button
+              className="bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white font-bold rounded mt-2"
+              type="submit"
+              disabled={isSubmitting}
+            >
               Submit
             </button>
           </Form>

@@ -13,11 +13,22 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/customers" element={<CustomerWrapper />} />
-      </Routes>
+      <div className="container mx-auto">
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                brand="Square Customer Creator"
+                logoUrl="https://1000logos.net/wp-content/uploads/2019/05/Square.jpg"
+                // logoUrl="https://image.shutterstock.com/image-vector/fake-counterfeit-copy-labeled-original-600w-1108512809.jpg"
+              />
+            }
+          />
+          <Route path="/customers" element={<CustomerWrapper />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   </React.StrictMode>
 );
