@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
-    <nav>
+    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
       <ul>
         <li>
           <h1>
-            <a href="index.html">Business Corp</a>
+            <Link to="/">Business Corp</Link>
           </h1>
         </li>
         <li>

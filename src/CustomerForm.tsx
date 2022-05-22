@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { ISquareCustomer } from './types/squareCustomer';
 
