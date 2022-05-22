@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { ISquareCustomer } from './types/squareCustomer';
+import { ISquareCustomer } from '../types/squareCustomer';
 
 interface IFormData {
   email_address?: string;

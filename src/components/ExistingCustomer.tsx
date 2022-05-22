@@ -1,5 +1,5 @@
 import Customer from './Customer';
-import { ISquareCustomer } from './types/squareCustomer';
+import { ISquareCustomer } from '../types/squareCustomer';
 
 interface IExistingCustomerProps {
   customerData: ISquareCustomer[];

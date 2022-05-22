@@ -4,17 +4,17 @@ interface ICustomerProps {
   emailAddress: string;
   createdAt: Date;
   emailUnsubscribed: boolean;
-  handleDelete: React.MouseEventHandler<HTMLButtonElement>;
   handleEdit: React.MouseEventHandler<HTMLButtonElement>;
+  handleDelete: React.MouseEventHandler<HTMLButtonElement>;
 }
 export default function Customer({
   givenName,
-  createdAt,
-  emailAddress,
   familyName,
+  emailAddress,
+  createdAt,
   emailUnsubscribed,
-  handleDelete,
   handleEdit,
+  handleDelete,
 }: ICustomerProps) {
   return (
     <div

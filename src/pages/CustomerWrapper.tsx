@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
-import CustomerForm from './CustomerForm';
-import ExistingCustomer from './ExistingCustomer';
-import Loading from './Loading';
-import { ISquareCustomer } from './types/squareCustomer';
+import CustomerForm from '../components/CustomerForm';
+import ExistingCustomer from '../components/ExistingCustomer';
+import Loading from '../components/Loading';
+import { ISquareCustomer } from '../types/squareCustomer';
 
 export default function CustomerWrapper() {
   const [customerData, setCustomerData] = useState([] as ISquareCustomer[]);
