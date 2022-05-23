@@ -3,14 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 interface INavbarProps {
   brand: string;
   brandIcon: React.ReactNode;
-  links: string[][];
+  links: [label: string, route: string][];
 }
 
 export default function Navbar({ brand, brandIcon, links }: INavbarProps) {
   const location = useLocation();
   return (
     <nav className="mb-8 border-b-2 px-6 py-2.5 bg-white shadow-lg rounded-lg">
-      <ul className=" container flex flex-wrap gap-4 font-medium justify-center items-center">
+      <ul className="flex flex-wrap gap-4 font-medium justify-center items-center">
         <li className="sm:mr-auto basis-full sm:basis-auto">
           <h1>
             <Link
