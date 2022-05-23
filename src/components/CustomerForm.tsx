@@ -1,6 +1,22 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { ISquareCustomer } from '../types/squareCustomer';
 
+const defaultFormValues = {
+  email_address: '',
+  given_name: '',
+  family_name: '',
+};
+
+const styles = {
+  form: 'border-2 flex flex-col p-8 w-full rounded-lg shadow-xl bg-white',
+  label: 'block text-gray-700 text-sm font-bold pt-2 pb-1',
+  field:
+    'bg-gray-100 text-gray-700 invalid:text-pink-600 invalid:border-pink-500 focus:text-gray-700 border-2 border-slate-300 focus:outline-none focus:border-blue-400 shadow-sm rounded py-2 px-3 block w-full appearance-none',
+  error: 'text-pink-600 text-sm',
+  submitButton:
+    'bg-blue-600 hover:bg-blue-800 transition-colors py-2 px-4 shadow-lg text-white font-bold rounded mt-4',
+};
+
 interface IFormData {
   email_address?: string;
   given_name?: string;
@@ -11,19 +27,6 @@ interface ICustomerFormProps {
   handleSubmit: Function;
   formData: ISquareCustomer;
 }
-
-const defaultFormValues = {
-  email_address: '',
-  given_name: '',
-  family_name: '',
-};
-
-const styles = {
-  label: 'block text-gray-700 text-sm font-bold pt-2 pb-1',
-  field:
-    'bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none',
-  error: 'text-red-500 text-sm',
-};
 
 export default function CustomerForm({
   handleSubmit,
@@ -65,14 +68,16 @@ export default function CustomerForm({
         }}
       >
         {({ isSubmitting }: { isSubmitting: boolean }) => (
-          <Form className="border-2 flex flex-col p-8 w-full rounded-lg shadow-xl bg-white">
+          <Form className={styles.form}>
             <label className={styles.label} htmlFor="email_address">
               Email
             </label>
             <Field
               className={styles.field}
-              type="email_address"
+              type="email"
               name="email_address"
+              id="email_address"
+              spellcheck="false"
             />
             <ErrorMessage
               className={styles.error}
@@ -82,7 +87,13 @@ export default function CustomerForm({
             <label className={styles.label} htmlFor="given_name">
               First Name
             </label>
-            <Field className={styles.field} type="text" name="given_name" />
+            <Field
+              className={styles.field}
+              type="text"
+              name="given_name"
+              id="given_name"
+              spellcheck="false"
+            />
             <ErrorMessage
               className={styles.error}
               name="given_name"
@@ -91,14 +102,20 @@ export default function CustomerForm({
             <label className={styles.label} htmlFor="family_name">
               Last Name
             </label>
-            <Field className={styles.field} type="text" name="family_name" />
+            <Field
+              className={styles.field}
+              type="text"
+              name="family_name"
+              id="family_name"
+              spellcheck="false"
+            />
             <ErrorMessage
               className={styles.error}
               name="family_name"
               component="div"
             />
             <button
-              className="bg-blue-500 hover:bg-blue-700 transition-colors py-2 px-4 shadow-lg text-white font-bold rounded mt-2"
+              className={styles.submitButton}
               type="submit"
               disabled={isSubmitting}
             >

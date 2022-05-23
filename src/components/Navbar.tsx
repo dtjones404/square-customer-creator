@@ -8,11 +8,14 @@ interface INavbarProps {
 export default function Navbar({ brand, brandIcon }: INavbarProps) {
   const location = useLocation();
   return (
-    <nav className="mb-8 border-b-2 px-4 py-2.5 bg-white shadow-lg rounded-lg">
-      <ul className=" container flex flex-wrap space-x-8 font-medium items-center">
-        <li className="mr-auto">
+    <nav className="mb-8 border-b-2 px-6 py-2.5 bg-white shadow-lg rounded-lg">
+      <ul className=" container flex flex-wrap gap-4 font-medium justify-center items-center">
+        <li className="sm:mr-auto basis-full sm:basis-auto">
           <h1>
-            <Link to="/" className="text-xl font-bold flex gap-2 items-center">
+            <Link
+              to="/"
+              className="text-xl font-bold flex gap-2 justify-center items-center"
+            >
               {brandIcon}
               {brand}
             </Link>

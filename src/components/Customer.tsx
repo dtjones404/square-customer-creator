@@ -18,14 +18,14 @@ export default function Customer({
 }: ICustomerProps) {
   return (
     <div
-      className={`flex justify-between p-4 bg-white shadow-lg border-2 rounded-lg border-l-8 ${
+      className={`flex flex-col md:flex-row justify-between p-4 gap-4 bg-white shadow-lg border-2 rounded-lg border-l-8 ${
         emailUnsubscribed ? 'border-l-rose-500' : 'border-l-lime-500'
       }`}
     >
-      <div className="flex flex-col">
-        <h3 className="text-lg font-semibold">
+      <div className="flex flex-col overflow-hidden">
+        <h2 className="text-lg font-semibold">
           {givenName} {familyName}
-        </h3>
+        </h2>
         <h3 className="text-lg font-semibold">
           {emailAddress ? emailAddress : 'N/A'}
         </h3>
@@ -34,9 +34,9 @@ export default function Customer({
           {emailUnsubscribed ? 'Unsubscribed' : 'Subscribed'}
         </h3>
       </div>
-      <div className="w-24 flex flex-col justify-center items-center gap-2">
+      <div className="w-full md:w-24 my-1.5 flex flex-col justify-center items-center gap-2">
         <button
-          className="w-full border-2 border-blue-600 bg-white hover:bg-slate-100 transition-colors text-gray-800 font-bold py-2 px-4 rounded"
+          className="w-full border-2 border-blue-600 bg-white hover:bg-slate-200 transition-colors text-gray-800 font-bold py-2 px-4 rounded"
           onClick={handleEdit}
         >
           Edit
