@@ -17,6 +17,7 @@ app.use('/customers', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
+//Express global error handler
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',

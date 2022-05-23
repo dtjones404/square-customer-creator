@@ -22,8 +22,9 @@ export default function Customer({
         emailUnsubscribed ? 'border-l-rose-500' : 'border-l-lime-500'
       }`}
     >
+      {/* details container */}
       <div className="flex flex-col overflow-hidden">
-        <h2 className="text-lg font-semibold">
+        <h2 className="text-lg font-bold">
           {givenName} {familyName}
         </h2>
         <h3 className="text-lg font-semibold">
@@ -34,6 +35,8 @@ export default function Customer({
           {emailUnsubscribed ? 'Unsubscribed' : 'Subscribed'}
         </h3>
       </div>
+
+      {/* button container */}
       <div className="w-full md:w-24 my-1.5 flex flex-col justify-center items-center gap-2">
         <button
           className="w-full border-2 border-blue-600 bg-white hover:bg-slate-200 transition-colors text-gray-800 font-bold py-2 px-4 rounded"

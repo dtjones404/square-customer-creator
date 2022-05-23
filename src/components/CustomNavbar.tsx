@@ -7,6 +7,10 @@ export default function CustomNavbar() {
     <Navbar
       brand="Business Corp"
       brandIcon={<FontAwesomeIcon icon={faGem} />}
+      links={[
+        ['Home', '/'],
+        ['Customers', '/customers'],
+      ]}
     />
   );
 }

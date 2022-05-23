@@ -14,12 +14,12 @@ export default function CustomerWrapper() {
   useEffect(() => {
     fetchData();
   }, []);
+
   const fetchData = async () => {
     const response: AxiosResponse = await axios.get('/api/customer');
     setCustomerData(response.data);
     setIsLoading(false);
   };
-
   const handleSubmit = async (formData: ISquareCustomer) => {
     if (editId) {
       const response: AxiosResponse = await axios.put(

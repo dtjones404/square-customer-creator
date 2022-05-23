@@ -3,9 +3,10 @@ import { Link, useLocation } from 'react-router-dom';
 interface INavbarProps {
   brand: string;
   brandIcon: React.ReactNode;
+  links: string[][];
 }
 
-export default function Navbar({ brand, brandIcon }: INavbarProps) {
+export default function Navbar({ brand, brandIcon, links }: INavbarProps) {
   const location = useLocation();
   return (
     <nav className="mb-8 border-b-2 px-6 py-2.5 bg-white shadow-lg rounded-lg">
@@ -21,30 +22,20 @@ export default function Navbar({ brand, brandIcon }: INavbarProps) {
             </Link>
           </h1>
         </li>
-        <li>
-          <Link
-            to="/"
-            className={`block py-2 px-3 border-b-4 transition-colors border-transparent ${
-              location.pathname === '/'
-                ? 'text-blue-700 border-blue-400'
-                : 'text-gray-700'
-            } hover:text-blue-700`}
-          >
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/customers"
-            className={`block py-2 px-3 border-b-4 transition-colors border-transparent ${
-              location.pathname === '/customers'
-                ? 'text-blue-700 border-blue-400'
-                : 'text-gray-700'
-            } hover:text-blue-700`}
-          >
-            Customers
-          </Link>
-        </li>
+        {links.map(([label, route]) => (
+          <li>
+            <Link
+              to={route}
+              className={`block py-2 px-3 border-b-4 transition-colors border-transparent ${
+                location.pathname === route
+                  ? 'text-blue-700 border-blue-400'
+                  : 'text-gray-700'
+              } hover:text-blue-700`}
+            >
+              {label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );
