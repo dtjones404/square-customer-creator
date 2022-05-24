@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
 import CustomerWrapper from './pages/CustomerWrapper';
 import Home from './pages/Home';
 import CustomNavbar from './components/CustomNavbar';

@@ -14,7 +14,6 @@ module.exports = {
         'sans-serif',
       ],
     },
-    color: 'red',
   },
   plugins: [],
 };
