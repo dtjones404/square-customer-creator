@@ -12,7 +12,7 @@ export const customerController = {
           'Content-Type': 'application/json',
         },
       });
-      res.locals.customers = response.data.customers;
+      res.locals.customers = response.data.customers || [];
       next();
     } catch (err) {
       return next({

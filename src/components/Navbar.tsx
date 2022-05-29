@@ -23,7 +23,7 @@ export default function Navbar({ brand, brandIcon, links }: INavbarProps) {
           </h1>
         </li>
         {links.map(([label, route]) => (
-          <li>
+          <li key={label}>
             <Link
               to={route}
               className={`block py-2 px-3 border-b-4 transition-colors border-transparent ${

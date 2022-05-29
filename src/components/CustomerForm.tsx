@@ -79,7 +79,7 @@ export default function CustomerForm({
               type="email"
               name="email_address"
               id="email_address"
-              spellcheck="false"
+              spellCheck="false"
             />
             <ErrorMessage
               className={styles.error}
@@ -94,7 +94,7 @@ export default function CustomerForm({
               type="text"
               name="given_name"
               id="given_name"
-              spellcheck="false"
+              spellCheck="false"
             />
             <ErrorMessage
               className={styles.error}
@@ -109,7 +109,7 @@ export default function CustomerForm({
               type="text"
               name="family_name"
               id="family_name"
-              spellcheck="false"
+              spellCheck="false"
             />
             <ErrorMessage
               className={styles.error}
