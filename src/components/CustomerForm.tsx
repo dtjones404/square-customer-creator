@@ -1,4 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { object, string } from 'yup';
 import { ISquareCustomer } from '../types/squareCustomer';
 
 const defaultFormValues = {
@@ -16,11 +17,11 @@ const styles = {
      text-white font-bold rounded mt-4`,
 };
 
-interface IFormData {
-  email_address?: string;
-  given_name?: string;
-  family_name?: string;
-}
+const formSchema = object({
+  email_address: string().required('Required').email('Invalid email'),
+  given_name: string().required('Required'),
+  family_name: string().required('Required'),
+});
 
 interface ICustomerFormProps {
   handleSubmit: Function;
@@ -41,25 +42,7 @@ export default function CustomerForm({
           given_name: formData.given_name,
           family_name: formData.family_name,
         }}
-        validate={(values) => {
-          const errors: IFormData = {};
-          if (!values.email_address) {
-            errors.email_address = 'Required';
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
-              values.email_address
-            )
-          ) {
-            errors.email_address = 'Invalid email address';
-          }
-          if (!values.given_name) {
-            errors.given_name = 'Required';
-          }
-          if (!values.family_name) {
-            errors.family_name = 'Required';
-          }
-          return errors;
-        }}
+        validationSchema={formSchema}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           handleSubmit(values);
           setSubmitting(false);
