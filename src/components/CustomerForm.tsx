@@ -10,10 +10,7 @@ const defaultFormValues = {
 const styles = {
   form: 'border-2 flex flex-col p-8 w-full rounded-lg shadow-xl bg-white',
   label: 'block text-gray-700 text-sm font-bold pt-2 pb-1',
-  field: `bg-gray-100 text-gray-700 invalid:text-pink-600 invalid:border-pink-500
-     focus:text-gray-700 border-2 border-slate-300 focus:outline-none
-      focus:border-blue-400 shadow-sm rounded py-2 px-3 block w-full
-       appearance-none`,
+  field: `rounded bg-slate-100 focus:ring-blue-200/70 focus:bg-white focus:ring-4 invalid:ring-red-300/70 invalid:ring-4`,
   error: 'text-pink-600 text-sm',
   submitButton: `bg-blue-600 hover:bg-blue-800 transition-colors py-2 px-4 shadow-lg
      text-white font-bold rounded mt-4`,
