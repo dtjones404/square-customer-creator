@@ -7,19 +7,23 @@ body {
 }
 
 .customerCard-enter {
+  opacity: 0;
   transform: translate(-100%);
 }
 
 .customerCard-enter-active {
+  opacity: 1;
   transform: translate(0%);
   transition: 0.3s;
 }
 
 .customerCard-exit {
+  opacity: 1;
   transform: translate(0%);
 }
 
 .customerCard-exit-active {
+  opacity: 0;
   transform: translate(-100%);
   transition: 0.3s;
 }
