@@ -27,7 +27,7 @@ export default function ExistingCustomer({
         searchTerm={searchTerm}
         handleSearchTermChange={handleSearchTermChange}
       />
-      <div className="border-2 rounded-lg max-h-[700px] overflow-y-scroll shadow-xl flex flex-col">
+      <div className="border-2 bg-white rounded-lg max-h-[700px] overflow-y-scroll shadow-xl flex flex-col">
         {!customerData.length ? (
           <div className="text-xl py-24 font-bold flex flex-col gap-2 justify-center items-center">
             <FontAwesomeIcon

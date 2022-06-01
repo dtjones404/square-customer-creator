@@ -30,8 +30,10 @@ export default function CustomerWrapper() {
       const resultArr = result.map((res) => res.item);
       return resultArr;
     };
+    // timeout prevents component from responding immediately to keystrokes (looks too busy)
     const timeout = setTimeout(() => setSearchResults(getSearchResult()), 400);
 
+    // clear timeout on cleanup to prevent race conditions
     return () => clearTimeout(timeout);
   }, [searchTerm, customerData]);
 
