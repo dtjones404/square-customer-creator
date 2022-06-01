@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import Fuse from 'fuse.js';
 import { useEffect, useState } from 'react';
 import CustomerForm from '../components/CustomerForm';
 import ExistingCustomer from '../components/ExistingCustomer';
@@ -10,10 +11,29 @@ export default function CustomerWrapper() {
   const [isLoading, setIsLoading] = useState(true);
   const [editId, setEditId] = useState(null as string | null);
   const [formData, setFormData] = useState({} as ISquareCustomer);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([] as ISquareCustomer[]);
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const getSearchResult = () => {
+      const fuse = new Fuse(customerData, {
+        shouldSort: true,
+        keys: ['email_address', 'given_name', 'family_name'],
+      });
+      if (!searchTerm.length) return [...customerData];
+
+      const result = fuse.search(searchTerm);
+      const resultArr = result.map((res) => res.item);
+      return resultArr;
+    };
+    const timeout = setTimeout(() => setSearchResults(getSearchResult()), 400);
+
+    return () => clearTimeout(timeout);
+  }, [searchTerm, customerData]);
 
   const fetchData = async () => {
     const response: AxiosResponse = await axios.get('/api/customer');
@@ -50,6 +70,9 @@ export default function CustomerWrapper() {
     setEditId(customerData.id);
     setFormData(customerData);
   };
+  const handleSearchTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <div>
@@ -59,9 +82,11 @@ export default function CustomerWrapper() {
           <Loading />
         ) : (
           <ExistingCustomer
-            customerData={customerData}
+            customerData={searchResults}
             handleDelete={handleDelete}
             handleEdit={handleEdit}
+            searchTerm={searchTerm}
+            handleSearchTermChange={handleSearchTermChange}
           />
         )}
       </div>
