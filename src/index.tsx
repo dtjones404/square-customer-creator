@@ -1,26 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import App from './components/App';
 import './index.css';
-import CustomerWrapper from './pages/CustomerWrapper';
-import Home from './pages/Home';
-import CustomNavbar from './components/CustomNavbar';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <div className="container mx-auto">
-        <CustomNavbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/customers" element={<CustomerWrapper />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
 );
 

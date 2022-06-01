@@ -11,13 +11,13 @@ export default function Searchbar({
   handleSearchTermChange,
 }: ISearchbarProps) {
   return (
-    <div className="p-4 border-b-2 flex items-center gap-4">
+    <div className="p-4 px-6 flex bg-white dark:bg-stone-800 items-center gap-4 border-2 rounded-lg">
       <FontAwesomeIcon
-        className="text-xl text-blue-700"
+        className="text-xl text-blue-700 dark:text-blue-500"
         icon={faMagnifyingGlass}
       />
       <input
-        className="w-full lg:w-[450px] shadow-sm rounded bg-white focus:ring-blue-200/70 focus:bg-white focus:ring-4 invalid:ring-red-300/70 invalid:ring-4"
+        className="w-full lg:w-[450px] shadow-sm rounded bg-white dark:bg-stone-800 focus:ring-blue-200/70 dark:focus:bg-stone-700 dark:placeholder:text-stone-400 focus:ring-4 invalid:ring-red-300/70 invalid:ring-4"
         type="text"
         value={searchTerm}
         onChange={handleSearchTermChange}

@@ -9,11 +9,12 @@ const defaultFormValues = {
 };
 
 const styles = {
-  form: 'border-2 flex flex-col p-8 pt-6 w-full rounded-lg shadow-xl bg-white',
-  label: 'block text-gray-700 text-sm font-bold pb-1 pt-2 required',
-  field: `rounded shadow-sm bg-slate-100 focus:ring-blue-200/70 focus:bg-white focus:ring-4 invalid:ring-red-300/70 invalid:ring-4`,
-  error: 'text-pink-600 text-sm',
-  submitButton: `bg-blue-600 hover:bg-blue-800 transition-colors py-2 px-4 shadow-lg
+  form: 'border-2 flex flex-col p-8 pt-6 w-full rounded-lg shadow-xl bg-white dark:bg-stone-800',
+  label:
+    'block text-gray-700 dark:text-zinc-200 text-sm font-bold pb-1 pt-2 required',
+  field: `rounded shadow-sm bg-slate-100 dark:bg-stone-800 focus:ring-blue-200/70 focus:bg-white focus:dark:bg-stone-700 focus:ring-4 invalid:ring-red-300/70 invalid:ring-4`,
+  error: 'text-pink-600 dark:text-pink-400 text-sm',
+  submitButton: `bg-blue-600 hover:bg-blue-800 dark:hover:bg-blue-500 transition-colors py-2 px-4 shadow-lg
      text-white font-bold rounded mt-4`,
 };
 

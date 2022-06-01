@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: rgb(245, 246, 248);
-}
-
 .customerCard-enter {
   opacity: 0;
   transform: translate(-100%);

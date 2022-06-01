@@ -22,21 +22,21 @@ export default function ExistingCustomer({
   handleSearchTermChange,
 }: IExistingCustomerProps) {
   return (
-    <div className="flex-1 border-2 bg-white rounded-lg max-h-[700px] overflow-y-scroll shadow-xl flex flex-col">
+    <div className="flex-1 bg-white dark:bg-stone-800 rounded-lg max-h-[700px] shadow-xl flex flex-col">
       <Searchbar
         searchTerm={searchTerm}
         handleSearchTermChange={handleSearchTermChange}
       />
       {!customerData.length ? (
-        <div className="text-xl py-24 font-bold flex flex-col gap-2 justify-center items-center">
+        <div className="flex-1 py-24 text-xl border-2 rounded-lg font-bold flex flex-col gap-2 justify-center items-center">
           <FontAwesomeIcon
-            className="text-4xl text-rose-500 mr-2"
+            className="text-4xl text-rose-500"
             icon={faPersonCircleQuestion}
           />
           <h2 className="text-2xl text-center">No customers found.</h2>
         </div>
       ) : (
-        <TransitionGroup>
+        <TransitionGroup className="overflow-y-scroll border-2 rounded-lg">
           {customerData.map((customerData) => (
             <TransitionWrapper
               key={customerData.id}
