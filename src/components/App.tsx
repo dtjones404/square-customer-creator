@@ -1,6 +1,6 @@
 import { faGem } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CustomerWrapper from '../pages/CustomerWrapper';
 import Home from '../pages/Home';
@@ -8,8 +8,15 @@ import Navbar from './Navbar';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    setDarkMode(localStorage.getItem('darkMode') === 'true');
+  }, []);
   const handleChangeDarkMode = () => {
-    setDarkMode((oldState) => !oldState);
+    setDarkMode((oldState) => {
+      localStorage.setItem('darkMode', (!oldState).toString());
+      return !oldState;
+    });
   };
   return (
     <BrowserRouter>
