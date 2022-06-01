@@ -38,6 +38,7 @@ export default function CustomerWrapper() {
   const fetchData = async () => {
     const response: AxiosResponse = await axios.get('/api/customer');
     setCustomerData(response.data);
+    setSearchResults([...response.data]);
     setIsLoading(false);
   };
   const handleSubmit = async (formData: ISquareCustomer) => {
