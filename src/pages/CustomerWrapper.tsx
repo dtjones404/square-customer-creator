@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import Fuse from 'fuse.js';
-import { useEffect, useState } from 'react';
+import { useDeferredValue, useEffect, useState } from 'react';
 import CustomerForm from '../components/CustomerForm';
 import ExistingCustomer from '../components/ExistingCustomer';
 import Loading from '../components/Loading';
@@ -13,6 +13,7 @@ export default function CustomerWrapper() {
   const [formData, setFormData] = useState({} as ISquareCustomer);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([] as ISquareCustomer[]);
+  const deferredSearchTerm = useDeferredValue(searchTerm);
 
   useEffect(() => {
     fetchData();
@@ -24,18 +25,15 @@ export default function CustomerWrapper() {
         shouldSort: true,
         keys: ['email_address', 'given_name', 'family_name'],
       });
-      if (!searchTerm.length) return [...customerData];
 
-      const result = fuse.search(searchTerm);
+      if (!deferredSearchTerm.length) return [...customerData];
+
+      const result = fuse.search(deferredSearchTerm);
       const resultArr = result.map((res) => res.item);
       return resultArr;
     };
-    // timeout prevents component from responding immediately to keystrokes (looks too busy)
-    const timeout = setTimeout(() => setSearchResults(getSearchResult()), 400);
-
-    // clear timeout on cleanup to prevent race conditions
-    return () => clearTimeout(timeout);
-  }, [searchTerm, customerData]);
+    setSearchResults(getSearchResult());
+  }, [deferredSearchTerm, customerData]);
 
   const fetchData = async () => {
     const response: AxiosResponse = await axios.get('/api/customer');
