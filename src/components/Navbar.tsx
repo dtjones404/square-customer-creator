@@ -37,7 +37,7 @@ export default function Navbar({
               className={`block py-2 px-3 border-b-4 transition-colors border-transparent ${
                 location.pathname === route
                   ? 'text-blue-700 border-blue-400 dark:text-blue-300 dark:border-blue-300'
-                  : 'text-gray-700 dark:text-zinc-200'
+                  : 'text-gray-700 dark:text-zinc-100'
               } hover:text-blue-700 dark:hover:text-blue-400`}
             >
               {label}

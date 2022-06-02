@@ -22,7 +22,7 @@ export default function App() {
     <BrowserRouter>
       <div className={darkMode ? 'dark' : ''}>
         <div className="bg-gray-25 dark:bg-stone-900 h-screen">
-          <div className="container mx-auto text-gray-700 dark:text-zinc-200">
+          <div className="container mx-auto text-gray-700 dark:text-zinc-100">
             <Navbar
               brand="Business Corp"
               brandIcon={<FontAwesomeIcon icon={faGem} />}
